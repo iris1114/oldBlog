@@ -2189,9 +2189,12 @@ a.toc-link {
 .article-entry pre,
 .article-entry .highlight {
   background: #f7f7f7;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   border-radius: 0.4rem;
+  overflow: auto;
   color: #4d4d4c;
   overflow-x: scroll;
 }
