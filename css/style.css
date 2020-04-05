@@ -1797,6 +1797,11 @@ img {
   font-size: 85%;
   opacity: 0.8;
 }
+@media screen and (max-width: 768px) {
+  .tocbot {
+    display: none;
+  }
+}
 .tocbot > .toc-list {
   position: relative;
   overflow: hidden;
@@ -2127,6 +2132,7 @@ a.toc-link {
 .page-type-title {
   margin: 0;
   padding: 3rem 0;
+  text-transform: capitalize;
 }
 .page-nav {
   margin: 3rem auto;
@@ -2183,13 +2189,11 @@ a.toc-link {
 .article-entry pre,
 .article-entry .highlight {
   background: #f7f7f7;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   border-radius: 0.4rem;
-  overflow: auto;
   color: #4d4d4c;
+  overflow-x: scroll;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -2215,6 +2219,9 @@ a.toc-link {
   border: none;
   margin: 0;
   padding: 0;
+}
+.article-entry .highlight pre .line {
+  overflow-x: scroll;
 }
 .article-entry .highlight table {
   margin: 0;
