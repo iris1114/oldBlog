@@ -880,7 +880,7 @@ body {
   position: relative;
   background-color: #fff;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-size: 1.4rem;
+  font-size: 15px;
   line-height: 1.7;
   color: #1e3e3f;
   padding: 0;
@@ -1012,7 +1012,7 @@ img {
   padding: 0 1.5rem;
   width: 100%;
   overflow: auto;
-  border-left: 0.3rem #9c8079 solid;
+  border-left: 0.3rem #6bb5d7 solid;
   color: #5c6b72;
 }
 .article-entry blockquote > :first-child {
@@ -1038,6 +1038,7 @@ img {
   position: relative;
   z-index: 1;
   margin-right: 0;
+  top: 0px;
 }
 .content.on {
   transform: translateX(-10rem);
@@ -1395,13 +1396,18 @@ img {
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 100%;
   font-size: 16px;
 }
-.text-inner h1 {
+.text-inner .title {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .text-inner .title {
+    font-size: 20px;
+  }
 }
 .text-inner a,
 .text-inner {
@@ -1484,7 +1490,7 @@ img {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  background-color: #9c8079;
+  background-color: #6bb5d7;
   color: #fff;
   text-align: center;
   cursor: pointer;
@@ -1787,8 +1793,8 @@ img {
 .tocbot {
   position: absolute;
   top: 14rem;
-  left: calc((100vw - 70rem) / 2 + 70rem);
-  font-size: 80%;
+  left: calc((100vw - 70rem) / 2 + 75rem);
+  font-size: 85%;
   opacity: 0.8;
 }
 .tocbot > .toc-list {
@@ -1816,11 +1822,12 @@ a.toc-link {
 }
 .is-position-fixed {
   position: fixed !important;
-  top: 0;
+  top: 70px;
   right: 10rem;
 }
 .is-active-link {
   font-weight: 700;
+  margin-top: 60px;
 }
 .toc-link::before {
   background-color: #e6e6e6;
@@ -2175,7 +2182,7 @@ a.toc-link {
 }
 .article-entry pre,
 .article-entry .highlight {
-  background: #f6f8fa;
+  background: #f7f7f7;
   padding: 1.5rem;
   margin: 1.5rem 0;
   -webkit-border-radius: 0.4rem;
@@ -2194,7 +2201,7 @@ a.toc-link {
   text-shadow: none;
 }
 .article-entry code {
-  background: #f6f8fa;
+  background: #f7f7f7;
   padding: 0.25rem;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
@@ -2250,7 +2257,7 @@ a.toc-link {
   background: #d6d6d6;
 }
 .article-entry .gist {
-  background: #f6f8fa;
+  background: #f7f7f7;
 }
 .article-entry .gist .gist-file {
   border: none;
@@ -2273,7 +2280,7 @@ a.toc-link {
   border: none;
 }
 .article-entry .gist .gist-file .gist-meta {
-  background: #f6f8fa;
+  background: #f7f7f7;
   color: #8e908c;
   padding: 0;
   margin-top: 1rem;
@@ -2286,7 +2293,7 @@ a.toc-link {
 }
 pre .comment,
 pre .title {
-  color: #8e908c;
+  color: #69c;
 }
 pre .variable,
 pre .attribute,
@@ -2300,28 +2307,38 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #f2777a;
+  color: #63a35c;
+}
+pre .tag .name {
+  color: #63a35c;
+}
+pre .tag .attr {
+  color: #795da3;
+}
+pre .tag .string {
+  color: #ff914d;
 }
 pre .number,
 pre .preprocessor,
-pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
-  color: #f99157;
+  color: #ff914d;
 }
 pre .class,
 pre .ruby .class .title,
 pre .css .rules .attribute {
-  color: #9c9;
+  color: #63a35c;
 }
-pre .string,
+pre .string {
+  color: #ff914d;
+}
 pre .value,
 pre .inheritance,
 pre .header,
 pre .ruby .symbol,
 pre .xml .cdata {
-  color: #9c9;
+  color: #63a35c;
 }
 pre .css .hexcolor {
   color: #6cc;
@@ -2338,7 +2355,7 @@ pre .coffeescript .title {
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c9c;
+  color: #795da3;
 }
 .pace {
   -webkit-pointer-events: none;
@@ -2361,7 +2378,7 @@ pre .javascript .function {
 }
 .gitalk,
 .markdown-body {
-  font-size: 1.4rem !important;
+  font-size: 15px !important;
 }
 .gt-container .gt-avatar.gt-comment-avatar img {
   -webkit-border-radius: 50%;
