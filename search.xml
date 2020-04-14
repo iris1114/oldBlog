@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JavaScript Function Definitions#8</title>
+    <url>/2020/04/07/js-w3s8/</url>
+    <content><![CDATA[<p>A JavaScript function is a block of code designed to perform a particular task.</p>
+<a id="more"></a>
+
+<h3 id="1-JavaScript-Function-Syntax"><a href="#1-JavaScript-Function-Syntax" class="headerlink" title="1. JavaScript Function Syntax"></a>1. JavaScript Function Syntax</h3><p>A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().</p>
+<p>Function names can contain letters, digits, underscores, and dollar signs (<a href="https://iris1114.github.io/2020/04/04/js-w3s5/#Variables">same rules as variables</a>).</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params">parameter1, parameter2, parameter3</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// code to be executed</span></span><br><span class="line">  <span class="keyword">return</span>  parameter1 + parameter2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Function-Expressions"><a href="#2-Function-Expressions" class="headerlink" title="2. Function Expressions"></a>2. Function Expressions</h3><p>A function expression can be stored in a variable:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;<span class="keyword">return</span> a * b&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>After a function expression has been stored in a variable, the variable can be used as a function:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;<span class="keyword">return</span> a * b&#125;;</span><br><span class="line"><span class="keyword">var</span> z = x(<span class="number">4</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-The-Function-Constructor"><a href="#3-The-Function-Constructor" class="headerlink" title="3. The Function() Constructor"></a>3. The Function() Constructor</h3><p>Functions can also be defined with a built-in JavaScript function constructor called Function().</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunction = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"return a * b"</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Most of the time, you can avoid using the new keyword in JavaScript.</p>
+</blockquote>
+<h3 id="4-Self-Invoking-Functions"><a href="#4-Self-Invoking-Functions" class="headerlink" title="4. Self-Invoking Functions"></a>4. Self-Invoking Functions</h3><p>A self-invoking expression is invoked (started) automatically, without being called.</p>
+<p>Function expressions will execute automatically if the expression is followed by ().</p>
+<p>You cannot self-invoke a function declaration.</p>
+<p>The function above is actually an anonymous self-invoking function (function without name).</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="string">"Hello!!"</span>;  <span class="comment">// I will invoke myself</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-Arrow-Functions"><a href="#5-Arrow-Functions" class="headerlink" title="5. Arrow Functions"></a>5. Arrow Functions</h3><p>Arrow functions allows a short syntax for writing function expressions.</p>
+<p>You don’t need the function keyword, the return keyword, and the curly brackets.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">const</span> x = <span class="function">(<span class="params">x, y</span>) =&gt;</span> x * y;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-Other"><a href="#6-Other" class="headerlink" title="6. Other"></a>6. Other</h3><p>Functions can Be used as values<br>JavaScript functions can be used in expressions.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = myFunction(<span class="number">4</span>, <span class="number">3</span>);</span><br><span class="line"><span class="keyword">var</span> x = myFunction(<span class="number">4</span>, <span class="number">3</span>) * <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Functions are Objects</p>
+<p>The typeof operator in JavaScript returns “function” for functions.</p>
+<p>JavaScript functions have both properties and methods.</p>
+<p>The arguments.length property returns the number of arguments received when the function was invoked:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">arguments</span>.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The toString() method returns the function as a string:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> txt = myFunction.toString();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>w3school</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Knives Out 電影心得</title>
     <url>/2020/04/05/knivesOut/</url>
     <content><![CDATA[<p>我不是專業影評人，純粹想紀錄一下看完這部電影的感受。朋友推薦我看，覺得很好看～來分享～<br>我的分數:8.5</p>
