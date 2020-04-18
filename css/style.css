@@ -1218,15 +1218,28 @@ img {
 .header .logo h1 {
   font-size: 20px;
 }
+.header .logo .logo-text {
+  flex: 2;
+}
+.header .logo .search .fe-search:before {
+  font-size: 16px;
+  font-weight: 700;
+  padding-right: 10px;
+  color: #127ea9;
+}
+@media screen and (min-width: 768px) {
+  .header .logo .search {
+    display: none;
+  }
+}
 .header .logo .hb {
   display: block;
   width: 34px;
   height: 34px;
   box-sizing: border-box;
-  margin-left: auto;
   position: relative;
   top: 5px;
-  right: 10px;
+  left: 10px;
 }
 @media screen and (min-width: 768px) {
   .header .logo .hb {
@@ -1237,9 +1250,9 @@ img {
   display: block;
   width: 17px;
   height: 2px;
-  background-color: #777;
+  background-color: #127ea9;
   position: absolute;
-  right: 0;
+  left: 0;
   transition: 0.3s;
   z-index: 2;
 }
