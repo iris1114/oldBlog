@@ -860,11 +860,6 @@ template {
 [hidden] {
   display: none;
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 html,
 body {
   height: 100%;
@@ -885,12 +880,19 @@ body {
   color: #1e3e3f;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
   text-size-adjust: 100%;
 }
 body ::selection {
   background: #5c6b72;
   color: #e6e6e6;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
 }
 a {
   color: #127ea9;
@@ -2109,6 +2111,11 @@ a.toc-link {
   display: table;
   clear: both;
 }
+@media screen and (max-width: 767px) {
+  .archives {
+    margin-left: 4.8rem;
+  }
+}
 .archive-article-inner {
   margin-bottom: 1.5rem;
 }
@@ -2207,14 +2214,13 @@ a.toc-link {
 .article-entry pre,
 .article-entry .highlight {
   background: #f7f7f7;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
+  margin: 0 -20px;
+  padding: 15px 20px;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   border-radius: 0.4rem;
   overflow: auto;
   color: #4d4d4c;
-  overflow-x: scroll;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
