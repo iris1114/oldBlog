@@ -22,7 +22,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript Function Definitions#8</title>
+    <title>JS Function Definitions#8</title>
     <url>/2020/04/07/js-w3s8/</url>
     <content><![CDATA[<p>A JavaScript function is a block of code designed to perform a particular task.</p>
 <a id="more"></a>
@@ -109,7 +109,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript Data Types#7</title>
+    <title>JS Data Types#7</title>
     <url>/2020/04/04/js-w3s7/</url>
     <content><![CDATA[<p>JavaScript variables can hold many data types: numbers, strings, booleans,undefined, objects and function.</p>
 <a id="more"></a>
@@ -186,7 +186,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript Syntax - Operators#6</title>
+    <title>JS Syntax - Operators#6</title>
     <url>/2020/04/04/js-w3s6/</url>
     <content><![CDATA[<p>JavaScript uses arithmetic operators<code>( + - * / )</code> to compute values</p>
 <p>JavaScript uses an assignment operator <code>( = )</code> to assign values to variables,not an “equal to” operator.</p>
@@ -255,7 +255,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript Syntax - Value#5</title>
+    <title>JS Syntax - Value#5</title>
     <url>/2020/04/04/js-w3s5/</url>
     <content><![CDATA[<p>Fixed values are called literals. Variable values are called variables.</p>
 <a id="more"></a>
@@ -297,7 +297,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript Statements#4</title>
+    <title>JS Statements#4</title>
     <url>/2020/04/04/js-w3s4/</url>
     <content><![CDATA[<h3 id="1-Semicolons"><a href="#1-Semicolons" class="headerlink" title="1.Semicolons"></a>1.Semicolons</h3><a id="more"></a>
 
@@ -346,7 +346,7 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript Output#3</title>
+    <title>JS Output#3</title>
     <url>/2020/04/04/js-w3s3/</url>
     <content><![CDATA[<p>There’re five output in javascript :<br>innerHTML / document.write() /  window.alert() / console.log() / window.print()</p>
 <a id="more"></a>
