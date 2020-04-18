@@ -1001,6 +1001,7 @@ img {
   vertical-align: middle;
   text-align: left;
   border-spacing: 0;
+  line-height: 1.6em;
 }
 .article-entry table th,
 .article-entry table td,
@@ -2253,10 +2254,18 @@ a.toc-link {
   margin: 0;
   width: auto;
   border: none;
+  display: table;
 }
 .article-entry .highlight td {
-  border: none;
+  margin: 0;
   padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 .article-entry .highlight figcaption {
   font-size: 85%;
