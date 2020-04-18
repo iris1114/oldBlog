@@ -1010,10 +1010,12 @@ img {
 }
 .article-entry table th,
 .article-entry table td {
-  padding: 1rem 1.5rem;
-}
-.article-entry table tbody tr:nth-child(2n) {
-  background-color: rgba(230,230,230,0.25);
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+  display: table-cell;
 }
 .article-entry blockquote {
   display: block;
