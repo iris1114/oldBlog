@@ -2226,6 +2226,13 @@ a.toc-link {
   border-radius: 0.4rem;
   overflow: auto;
   color: #4d4d4c;
+  margin: 0 -20px;
+  padding: 15px 20px;
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 1px 0;
+  overflow: auto;
+  color: #ccc;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
