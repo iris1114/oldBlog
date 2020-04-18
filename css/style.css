@@ -1167,6 +1167,7 @@ img {
 @media screen and (max-width: 767px) {
   .header .nav-bar a {
     margin-bottom: 30px;
+    font-weight: 700;
   }
   .header .nav-bar .search {
     display: none;
@@ -1474,7 +1475,7 @@ img {
 .local-search {
   position: relative;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 2rem;
   background-color: #fff;
   box-shadow: 0 1rem 3rem rgba(30,62,63,0.5);
   max-height: 100vh;
@@ -1497,8 +1498,8 @@ img {
 }
 .local-search-close {
   position: absolute;
-  top: 3.85rem;
-  right: 4.25rem;
+  top: 3rem;
+  right: 3rem;
   display: block;
   height: 2rem;
   width: 2rem;
@@ -1537,7 +1538,7 @@ img {
 .search-result-list li .search-result {
   padding-top: 0.5rem;
   margin: 0;
-  max-height: 12rem;
+  max-height: 80px;
   overflow: hidden;
 }
 .search-result-list li em.search-keyword {
