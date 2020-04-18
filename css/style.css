@@ -999,8 +999,8 @@ img {
   width: 100%;
   border-collapse: collapse;
   vertical-align: middle;
-  empty-cells: show;
   text-align: left;
+  border-spacing: 0;
 }
 .article-entry table th,
 .article-entry table td,
@@ -1595,14 +1595,8 @@ img {
   margin-left: 0;
 }
 .article-entry {
-  margin-top: 3rem;
+  padding: 0 20px;
   color: #1e3e3f;
-}
-.article-entry::before,
-.article-entry::after {
-  content: "";
-  display: table;
-  clear: both;
 }
 .article-entry .pullquote {
   text-align: left;
@@ -2090,7 +2084,7 @@ a.toc-link {
   position: absolute;
   top: 0;
   left: 0;
-  width: 6rem;
+  width: 4.8rem;
 }
 .archive-year-wrap .archive-year {
   position: relative;
@@ -2106,7 +2100,7 @@ a.toc-link {
   width: 100%;
 }
 .archives {
-  margin-left: 6rem;
+  margin-left: 4.8rem;
   border-left: 0.1rem #e6e6e6 dashed;
   padding-left: 3rem;
 }
@@ -2219,20 +2213,13 @@ a.toc-link {
 .article-entry pre,
 .article-entry .highlight {
   background: #f7f7f7;
-  margin: 0 -20px;
-  padding: 15px 20px;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   border-radius: 0.4rem;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   color: #4d4d4c;
-  margin: 0 -20px;
-  padding: 15px 20px;
-  border-style: solid;
-  border-color: #ddd;
-  border-width: 1px 0;
   overflow: auto;
-  color: #ccc;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
