@@ -1168,6 +1168,9 @@ img {
   .header .nav-bar a {
     margin-bottom: 30px;
   }
+  .header .nav-bar .search {
+    display: none;
+  }
 }
 .header a:after {
   display: block;
