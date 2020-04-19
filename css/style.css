@@ -1085,17 +1085,6 @@ img {
 .wrap,
 .outer {
   width: 100%;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  margin: auto;
-}
-.wrap::before,
-.outer::before,
-.wrap::after,
-.outer::after {
-  content: "";
-  display: table;
-  clear: both;
 }
 .local-search {
   width: 100%;
@@ -1113,12 +1102,6 @@ img {
   }
   .navbar-toggle {
     display: none;
-  }
-  .wrap,
-  .outer {
-    width: 70rem;
-    padding-right: 0;
-    padding-left: 0;
   }
   .local-search {
     width: 70rem;
@@ -2222,6 +2205,7 @@ a.toc-link {
   border-radius: 0.4rem;
   overflow: auto;
   color: #4d4d4c;
+  -webkit-overflow-scrolling: touch;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -2231,6 +2215,7 @@ a.toc-link {
 .article-entry code {
   font-family: inherit;
   text-shadow: none;
+  -webkit-overflow-scrolling: touch;
 }
 .article-entry code {
   background: #f7f7f7;
