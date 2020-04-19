@@ -1085,6 +1085,17 @@ img {
 .wrap,
 .outer {
   width: 100%;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  margin: auto;
+}
+.wrap::before,
+.outer::before,
+.wrap::after,
+.outer::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 .local-search {
   width: 100%;
@@ -1102,6 +1113,12 @@ img {
   }
   .navbar-toggle {
     display: none;
+  }
+  .wrap,
+  .outer {
+    width: 70rem;
+    padding-right: 0;
+    padding-left: 0;
   }
   .local-search {
     width: 70rem;
@@ -2232,9 +2249,6 @@ a.toc-link {
   border: none;
   margin: 0;
   padding: 0;
-}
-.article-entry .highlight pre .line {
-  overflow-x: scroll;
 }
 .article-entry .highlight table {
   margin: 0;
