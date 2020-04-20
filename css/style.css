@@ -885,10 +885,12 @@ body {
   color: #1e3e3f;
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
   text-size-adjust: 100%;
 }
 body ::selection {
   background: #5c6b72;
+  color: #e6e6e6;
 }
 body:before,
 body:after {
