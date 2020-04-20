@@ -2213,6 +2213,7 @@ a.toc-link {
 }
 .highlight {
   overflow: auto;
+  color: #4d4d4c;
 }
 .article-entry code {
   background: #eee;
@@ -2220,7 +2221,7 @@ a.toc-link {
   padding: 0 0.3em;
 }
 .article-entry pre {
-  background: #f7f7f7;
+  background: #f2f2f2;
   margin-right: -20px;
   margin-left: -20px;
   padding: 15px 20px;
@@ -2228,7 +2229,7 @@ a.toc-link {
   border-color: #ddd;
   border-width: 1px 0;
   overflow: auto;
-  color: #ccc;
+  color: #4d4d4c;
   line-height: 22.4px;
 }
 .article-entry pre code {
@@ -2238,10 +2239,10 @@ a.toc-link {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 .article-entry .highlight {
-  background: #f7f7f7;
+  background: #f2f2f2;
   margin-right: -20px;
   margin-left: -20px;
-  padding: 15px 20px;
+  padding: 15px 10px;
   overflow: auto;
   color: #ccc;
   line-height: 22.4px;
@@ -2261,6 +2262,7 @@ a.toc-link {
 .article-entry .highlight td {
   border: none;
   padding: 0;
+  padding-left: 10px;
 }
 .article-entry .highlight figcaption {
   font-size: 0.85em;
@@ -2281,11 +2283,14 @@ a.toc-link {
 .article-entry .highlight figcaption a {
   float: right;
 }
+.article-entry .highlight .gutter {
+  border-right: 2px solid #dbdbdb;
+}
 .article-entry .highlight .gutter pre {
   color: #666;
   font-size: 0.85em;
   text-align: right;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 .article-entry .highlight .line {
   height: 22.4px;
@@ -2299,7 +2304,7 @@ a.toc-link {
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
-  background: #f7f7f7;
+  background: #f2f2f2;
   padding: 15px 20px 15px 0;
 }
 .article-entry .gist .gist-file {
@@ -2326,7 +2331,7 @@ a.toc-link {
   border: none;
 }
 .article-entry .gist .gist-file .gist-meta {
-  background: #f7f7f7;
+  background: #f2f2f2;
   color: #999;
   text-shadow: 0 0;
   padding: 0;
@@ -2340,9 +2345,11 @@ a.toc-link {
 .article-entry .gist .gist-file .gist-meta a:hover {
   text-decoration: underline;
 }
-pre .comment,
-pre .title {
+pre .comment {
   color: #999;
+}
+pre .title {
+  color: #f99157;
 }
 pre .variable,
 pre .attribute,
@@ -2354,17 +2361,17 @@ pre .xml .pi,
 pre .xml .doctype,
 pre .html .doctype,
 pre .css .id,
+pre .built_in,
 pre .css .class,
 pre .css .pseudo {
   color: #f2777a;
 }
 pre .number,
 pre .preprocessor,
-pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
-  color: #f99157;
+  color: #69c;
 }
 pre .class,
 pre .ruby .class .title,
