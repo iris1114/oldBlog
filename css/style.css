@@ -2211,6 +2211,9 @@ a.toc-link {
 .float-none {
   float: none !important;
 }
+.highlight {
+  overflow: auto;
+}
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
