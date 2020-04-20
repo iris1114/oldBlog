@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS Function Parameters#9</title>
+    <url>/2020/04/20/js-w3s9/</url>
+    <content><![CDATA[<p>A JavaScript function does not perform any checking on parameter values (arguments).<br><em>js function 不會針對參數進行檢查</em></p>
+<a id="more"></a>
+<h3 id="Function-Parameters-and-Arguments"><a href="#Function-Parameters-and-Arguments" class="headerlink" title="Function Parameters and Arguments"></a>Function Parameters and Arguments</h3><ul>
+<li><p>Function parameters are the names listed in the function definition.<br><em>parameters(顯式參數)會在函數中定義時列出</em></p>
+</li>
+<li><p>Function arguments are the real values passed to (and received by) the function.<br><em>argument(隱式參數)指的是在使用函數時傳遞(或收到)真正的值</em></p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">parameter1, parameter2, parameter3</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// code to be executed</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Parameter-Rules"><a href="#Parameter-Rules" class="headerlink" title="Parameter Rules"></a>Parameter Rules</h3><ul>
+<li><p>JavaScript function definitions do not specify data types for parameters.<br><em>不會規定 parameters 的資料型態</em></p>
+</li>
+<li><p>JavaScript functions do not perform type checking on the passed arguments.<br><em>不會對  argument 進行檢查</em></p>
+</li>
+<li><p>JavaScript functions do not check the number of arguments received.<br><em>不會檢查 argument 的數量</em></p>
+</li>
+</ul>
+<h3 id="Parameter-Defaults"><a href="#Parameter-Defaults" class="headerlink" title="Parameter Defaults"></a>Parameter Defaults</h3><p>If a function is called with missing arguments (less than declared), the missing values are set to: undefined<br><em>若沒給參數，則預設為 undefined，但建議可給於參數一個默認值</em></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (y === <span class="literal">undefined</span>) &#123;</span><br><span class="line">    y = <span class="number">0</span>;</span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="keyword">return</span> x * y; <span class="comment">//0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="The-Arguments-Object"><a href="#The-Arguments-Object" class="headerlink" title="The Arguments Object"></a>The Arguments Object</h3><p>JavaScript functions have a built-in object called the arguments object.The argument object contains an array of the arguments used when the function was called (invoked).</p>
+<p><em>js本身有內建物件稱為 arguments object（包含陣列），當function被呼叫的時候可使用。</em></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findMax</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i;</span><br><span class="line">  <span class="keyword">var</span> max = -<span class="literal">Infinity</span>;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>[i] &gt; max) &#123;</span><br><span class="line">      max = <span class="built_in">arguments</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> max;</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML = findMax(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumAll</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i;</span><br><span class="line">  <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</span><br><span class="line">    sum += <span class="built_in">arguments</span>[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML = sumAll(<span class="number">1</span>, <span class="number">123</span>, <span class="number">500</span>, <span class="number">115</span>, <span class="number">44</span>, <span class="number">88</span>);  <span class="comment">//871</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Arguments-are-Passed-by-Value"><a href="#Arguments-are-Passed-by-Value" class="headerlink" title="Arguments are Passed by Value"></a>Arguments are Passed by Value</h3><p>The parameters, in a function call, are the function’s arguments.</p>
+<p>JavaScript arguments are passed by value: The function only gets to know the values, not the argument’s locations.<br>If a function changes an argument’s value, it does not change the parameter’s original value.<br>Changes to arguments are not visible (reflected) outside the function.</p>
+<p><em>在函數中調用的參數是函數的隱式參數。 JavaScript 隱式參數通過值來傳遞：函數僅僅只是獲取值。如果函數修改參數的值，不會修改顯式參數的初始值（在函數外定義）。隱式參數的改變在函數外是不可見的。</em></p>
+<h3 id="Objects-are-Passed-by-Reference"><a href="#Objects-are-Passed-by-Reference" class="headerlink" title="Objects are Passed by Reference"></a>Objects are Passed by Reference</h3><p>In JavaScript, object references are values.</p>
+<p>Because of this, objects will behave like they are passed by reference:</p>
+<p>If a function changes an object property, it changes the original value.<br>Changes to object properties are visible (reflected) outside the function.</p>
+<p><em>在JavaScript中，可以引用對象的值。因此我們在函數內部修改對象的屬性就會修改其初始的值。修改對象屬性可作用於函數外部（全局變量）。修改對象屬性在函數外是可見的。</em></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>w3school</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Iris&#39;s Quote</title>
     <url>/2020/04/18/irisQuote/</url>
     <content><![CDATA[<p>不時會更新blog banner文字， 想要用文字記錄每一刻想留下的溫度，歡迎把把文字帶走。</p>
