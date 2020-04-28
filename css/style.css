@@ -1337,6 +1337,7 @@ img {
   margin-left: 0;
 }
 .list-inline {
+  text-align: center;
   position: relative;
   margin: 0 -0.75rem;
 }

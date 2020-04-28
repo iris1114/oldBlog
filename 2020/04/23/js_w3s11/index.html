@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="前端 / 生活 / 旅行">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaScript variables can belong to the local or global scope.Global variables can be made local (private) with closures.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS Function Closures#11">
+<meta property="og:url" content="https://iris1114.github.io/2020/04/23/js_w3s11/index.html">
+<meta property="og:site_name" content="Iris Blog">
+<meta property="og:description" content="JavaScript variables can belong to the local or global scope.Global variables can be made local (private) with closures.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://iris1114.github.io/2020/04/23/image/js_w3s/js11.png">
+<meta property="article:published_time" content="2020-04-23T09:15:07.000Z">
+<meta property="article:modified_time" content="2020-04-23T08:35:37.903Z">
+<meta property="article:author" content="Iris Chew">
+<meta property="article:tag" content="javaScript">
+<meta property="article:tag" content="w3school">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://iris1114.github.io/2020/04/23/image/js_w3s/js11.png">
+
+  <title>
+    JS Function Closures#11 |
+    
+    Iris Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162862509-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162862509-1');
+</script>
+
+</head>
+
+<body>
+<main class="content">
+  <section class="header-container">
+  <input type="checkbox" name="" id="menu-control" />
+  <header class="header">
+    <div class="logo">
+      <label class="hb" for="menu-control">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </label>
+      <div class="logo-text">
+        <a class="active" href="/">
+          <h1>IRIS BLOG.</h1>
+        </a>
+      </div>
+      <div class="nav-item-link nav-item-search search" title="Search">
+        <i class="fe fe-search"></i>
+      </div>
+    </div>
+    <nav class="nav-bar">
+      
+      <a href="/categories/tech/">Tech</a>
+      
+      <a href="/categories/life/">Life</a>
+      
+      <a href="/tags">Tags</a>
+      
+      <a href="/portfolio">Portfolio</a>
+      
+      <a href="/about">About</a>
+      
+      <a class="nav-item-link nav-item-search search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </nav>
+
+   
+    
+  </header>
+  <div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+  </div>
+</section>
+
+  <section class="outer">
+  <article id="post-js_w3s11" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      JS Function Closures#11
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/04/23/js_w3s11/" class="article-date">
+  <time datetime="2020-04-23T09:15:07.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+  <div class="article-gallery">
+    <div class="article-gallery-photos">
+      
+        
+          <img src="/../image/js_w3s/js11.png" itemprop="image">
+        
+      
+    </div>
+  </div>
+
+
+                                                
+                                                                    <p>JavaScript variables can belong to the local or global scope.Global variables can be made local (private) with closures.</p>
+<a id="more"></a>
+<h3 id="local-or-global-scope"><a href="#local-or-global-scope" class="headerlink" title="local or global scope"></a>local or global scope</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">4</span>;       <span class="comment">//local variable</span></span><br><span class="line">  <span class="keyword">return</span> a * a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">4</span>;        <span class="comment">//global variable</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">  <span class="keyword">return</span> a * a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Variables created without a declaration keyword (var, let, or const) are always global, even if they are created inside a function.</p>
+</blockquote>
+<h3 id="A-Counter-Dilemma-计数器困境"><a href="#A-Counter-Dilemma-计数器困境" class="headerlink" title="A Counter Dilemma 计数器困境"></a>A Counter Dilemma 计数器困境</h3><p>You could use a global variable, and a function to increase the counter.<br><em>你可以使用全局變量，函數設置計數器遞增。</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Initiate counter</span></span><br><span class="line"><span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function to increment counter</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  counter += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Call add() 3 times</span></span><br><span class="line">add();</span><br><span class="line">add();</span><br><span class="line">add();</span><br><span class="line"></span><br><span class="line"><span class="comment">// The counter should now be 3</span></span><br></pre></td></tr></table></figure>
+
+<p>There is a problem with the solution above: Any code on the page can change the counter, without calling add().<br>The counter should be local to the add() function, to prevent other code from changing it<br><em>問題來了，页面上的任何脚本都能改变计数器，即便没有调用add() function。 如果在函数内声明计数器，如果没有调用函数将无法修改计数器的值。</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Initiate counter</span></span><br><span class="line"><span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function to increment counter</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line">  counter += <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Call add() 3 times</span></span><br><span class="line">add();</span><br><span class="line">add();</span><br><span class="line">add();</span><br><span class="line"></span><br><span class="line"><span class="comment">//The counter should now be 3. But it is 0</span></span><br></pre></td></tr></table></figure>
+
+<p> A JavaScript inner function can solve this.JavaScript <em>內嵌函數可以解決該問題。</em></p>
+<h3 id="JavaScript-Nested-Functions-内嵌函数"><a href="#JavaScript-Nested-Functions-内嵌函数" class="headerlink" title="JavaScript Nested Functions 内嵌函数"></a>JavaScript Nested Functions 内嵌函数</h3><p>the inner function plus() has access to the counter variable in the parent function<br><em>內嵌函數 plus() 可以訪問父函數的 counter 變量：</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">plus</span>(<span class="params"></span>) </span>&#123;counter += <span class="number">1</span>;&#125;</span><br><span class="line">  plus();   </span><br><span class="line">  <span class="keyword">return</span> counter;  <span class="comment">//1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This could have solved the counter dilemma, if we could reach the plus() function from the outside.<br>We also need to find a way to execute counter = 0 only once.We need a closure.<br><em>如果我们能在外部访问 plus() 函数，这样就能解决计数器的困境。我们同样需要确保 counter = 0 只执行一次。 我们需要閉包函數。</em></p>
+<h3 id="JavaScript-Closures"><a href="#JavaScript-Closures" class="headerlink" title="JavaScript Closures"></a>JavaScript Closures</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> add = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="keyword">return</span> counter += <span class="number">1</span>;&#125;</span><br><span class="line">&#125;)();</span><br><span class="line"> </span><br><span class="line">add(); <span class="comment">//1</span></span><br><span class="line">add(); <span class="comment">//2</span></span><br><span class="line">add(); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<p>The variable add is assigned the return value of a self-invoking function.</p>
+<p>This way add becomes a function. The “wonderful” part is that it can access the counter in the parent scope.<br>This is called a JavaScript closure. It makes it possible for a function to have “private” variables.</p>
+<p>The counter is protected by the scope of the anonymous function, and can only be changed using the add function.</p>
+<p><em>變量 add 指定了函數自我調用的返回字值。 add變量可以作為一個函數使用。非常棒的部分是它可以訪問函數上一層作用域的計數器。這個叫作 JavaScript 閉包。它使得函數擁有私有變量變成可能。計數器受匿名函數的作用域保護，只能通過 add 方法修改。</em></p>
+<p><em>*source w3school &amp; runoob</em></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="https://iris1114.github.io/2020/04/23/js_w3s11/" data-id="ck9jng83n001rt3nm394cg7of" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/w3school/" rel="tag">w3school</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/04/22/js_w3s10/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">JS Function Invocation#10</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2020 Iris Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
