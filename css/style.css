@@ -1701,6 +1701,7 @@ img {
   padding-top: 3rem;
   margin-top: 5rem;
   border-top: 0.1rem #e6e6e6 solid;
+  margin-bottom: 80px;
 }
 .article-nav::before,
 .article-nav::after {
