@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>React介紹 從0開始</title>
+    <url>/2020/05/24/react_1/</url>
+    <content><![CDATA[<h2 id="什麼是react？"><a href="#什麼是react？" class="headerlink" title="什麼是react？"></a>什麼是react？</h2><p>React - A JavaScript library for building user interfaces.<br>React是一個讓你便於建構UI的js函式庫。是 facebook 開發的一個 JS 函式庫，負責產生與管理前端的 UI 。</p>
+<a id="more"></a>
+<ul>
+<li>React is a JavaScript library - one of the most popular ones, with over 100,000 stars on GitHub.</li>
+<li>React is not a framework (unlike Angular, which is more opinionated).</li>
+<li>React is an open-source project created by Facebook.</li>
+<li>React is used to build user interfaces (UI) on the front end.</li>
+<li>React is the view layer of an MVC application (Model View Controller)</li>
+</ul>
+<p>One of the most important aspects of React is the fact that you can create components, which are like custom, reusable HTML elements, to quickly and efficiently build user interfaces. React also streamlines how data is stored and handled, using state and props.</p>
+<h2 id="React-特色-–-為什麼我要用它？"><a href="#React-特色-–-為什麼我要用它？" class="headerlink" title="React 特色 – 為什麼我要用它？"></a>React 特色 – 為什麼我要用它？</h2><ul>
+<li>用純 JS 在前端產生 HTML</li>
+<li>使用 Virtual DOM 達到即時更新的效果</li>
+<li>可以自定義 Component，方便開發</li>
+<li>使用JSX語法配合Babel輕鬆編寫</li>
+</ul>
+<h2 id="React-三大體系"><a href="#React-三大體系" class="headerlink" title="React 三大體系"></a>React 三大體系</h2><p><img src="https://i.imgur.com/888nDCx.png" alt=""></p>
+<p>用 React 說的一句話：Learn Once, Write Anywhere<br>學習了react，也可以同時用在其他地方。像 React Native 就能用來開發 iOS 與 Android。而React VR 也是目前趨勢，如Facebook上環視360°的全景影像就是其中一個應用。</p>
+<p>reference:<br><a href="https://www.taniarascia.com/getting-started-with-react/" target="_blank" rel="noopener">https://www.taniarascia.com/getting-started-with-react/</a></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS Function Closures#11</title>
     <url>/2020/04/23/js_w3s11/</url>
     <content><![CDATA[<p>JavaScript variables can belong to the local or global scope.Global variables can be made local (private) with closures.</p>

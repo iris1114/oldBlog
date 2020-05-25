@@ -939,7 +939,7 @@ img {
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
-  margin: 60px 0px 20px;
+  margin: 1.5rem 0;
 }
 .article-entry hr {
   height: 0.1rem;
@@ -2723,4 +2723,12 @@ pre .javascript .function {
     transform: translateY(0);
     opacity: 1;
   }
+}
+.article-entry h1,
+.article-entry h2,
+.article-entry h3,
+.article-entry h4,
+.article-entry h5,
+.article-entry h6 {
+  margin: 60px 0px 20px;
 }
