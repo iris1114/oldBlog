@@ -939,7 +939,7 @@ img {
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
-  margin: 1.5rem 0;
+  margin: 60px 0px 20px;
 }
 .article-entry hr {
   height: 0.1rem;
