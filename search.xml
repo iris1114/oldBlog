@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>建立React開發環境#2</title>
+    <url>/2020/05/26/react_2/</url>
+    <content><![CDATA[<h2 id="安裝node-js"><a href="#安裝node-js" class="headerlink" title="安裝node.js"></a>安裝node.js</h2><p>可至<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官方網站</a>進行下載安裝。建議是使用左邊版本，目前比較多人使用的版本，也相對比較穩定。</p>
+<a id="more"></a>
+<p>安裝成功後，可打開terminal，檢查node及npm版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v  </span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>如果都有出現版號(如v12.8.0)，即表示安裝成功。<br>若已安裝node.js, 記得檢查當前版本是否符合React適用開發環境。<br>目前React有規定node.js 及 npm 版本為：<strong>Node &gt;= 8.10 和 npm &gt;= 5.6</strong></p>
+<h2 id="Create-React-App"><a href="#Create-React-App" class="headerlink" title="Create React App"></a>Create React App</h2><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">cd Desktop //位置為桌面</span><br><span class="line">mkdir react  //建立react資料夾</span><br><span class="line">npx create-react-app my-app  //創建react app  資料夾命名</span><br><span class="line">cd my-app  //創建後進入my-app資料夾</span><br><span class="line">npm start  //開始預覽</span><br></pre></td></tr></table></figure>
+
+<p>npx 不是拼寫錯誤 —— 它是一個 npm 5.2+ 附帶的 package 執行器。<br><code>npm start</code> 後等到瀏覽器打開 <a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a> 出現react logo，即表示安裝成功啦啦。</p>
+<p>React官網說明：</p>
+<p>Create React App 並不會處理 backend 邏輯或資料庫；它只會建立一個 frontend build pipeline，以便你配合任何 backend 來使用。基本上，它是使用 Babel 和 webpack。</p>
+<p>當你準備好發佈到線上環境，執行 npm run build 會在 build 文件夾裡建立一個你的應用程式的最佳化版本，你可以從 Create React App 的 <a href="https://github.com/facebook/create-react-app#create-react-app--" target="_blank" rel="noopener">README</a> 和 <a href="https://create-react-app.dev/" target="_blank" rel="noopener">使用者指南</a>了解更多資訊。</p>
+<h2 id="搭建Babel-Webpack-Sass-的React環境"><a href="#搭建Babel-Webpack-Sass-的React環境" class="headerlink" title="搭建Babel + Webpack + Sass 的React環境"></a>搭建Babel + Webpack + Sass 的React環境</h2><p>若後續專案較大型，可參考<a href="https://blog.marcnuri.com/react-babel-webpack-sass-application/" target="_blank" rel="noopener">marcnuri blog</a> 建立環境。</p>
+<h2 id="React-App-文件夾解釋"><a href="#React-App-文件夾解釋" class="headerlink" title="React App 文件夾解釋"></a>React App 文件夾解釋</h2><p>以前都不知道各個檔案的作用，紀錄給曾經不懂的自己和新手們。</p>
+<p><img src="https://i.imgur.com/qfYn5uu.jpg" alt=""></p>
+<p><em>reference:<br><a href="https://zh-hant.reactjs.org/docs/create-a-new-react-app.html" target="_blank" rel="noopener">https://zh-hant.reactjs.org/docs/create-a-new-react-app.html</a><br><a href="https://blog.marcnuri.com/react-babel-webpack-sass-application/" target="_blank" rel="noopener">https://blog.marcnuri.com/react-babel-webpack-sass-application/</a></em></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>React介紹 從0開始</title>
     <url>/2020/05/24/react_1/</url>
     <content><![CDATA[<h2 id="什麼是react？"><a href="#什麼是react？" class="headerlink" title="什麼是react？"></a>什麼是react？</h2><p>React - A JavaScript library for building user interfaces.<br>React是一個讓你便於建構 UI 的 Javascript 函式庫。是 facebook 開發的一個 JS 函式庫，負責產生與管理前端的 UI 。</p>
