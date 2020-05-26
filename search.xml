@@ -27,7 +27,7 @@
       </tags>
   </entry>
   <entry>
-    <title>React介紹 從0開始</title>
+    <title>React介紹 從0開始#1</title>
     <url>/2020/05/24/react_1/</url>
     <content><![CDATA[<h2 id="什麼是react？"><a href="#什麼是react？" class="headerlink" title="什麼是react？"></a>什麼是react？</h2><p>React - A JavaScript library for building user interfaces.<br>React是一個讓你便於建構 UI 的 Javascript 函式庫。是 facebook 開發的一個 JS 函式庫，負責產生與管理前端的 UI 。</p>
 <a id="more"></a>
