@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="前端 / 生活 / 旅行">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JSX 是什麼？一開始看到 JSX 我就覺得很混亂，為什麼會有 JavaScript 又有 HTML,看起來很亂。沒錯，上一篇文章有提到， React 就是藉由 JavaScript 產生 HTML 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSX &amp; Visual Dom 介紹 #3">
+<meta property="og:url" content="https://iris1114.github.io/2020/05/28/react_3/index.html">
+<meta property="og:site_name" content="Iris Blog">
+<meta property="og:description" content="JSX 是什麼？一開始看到 JSX 我就覺得很混亂，為什麼會有 JavaScript 又有 HTML,看起來很亂。沒錯，上一篇文章有提到， React 就是藉由 JavaScript 產生 HTML 。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://iris1114.github.io/2020/05/28/image/react/react3.png">
+<meta property="article:published_time" content="2020-05-28T09:15:07.000Z">
+<meta property="article:modified_time" content="2020-05-28T09:33:19.041Z">
+<meta property="article:author" content="Iris Chew">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://iris1114.github.io/2020/05/28/image/react/react3.png">
+
+  <title>
+    JSX &amp; Visual Dom 介紹 #3 |
+    
+    Iris Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162862509-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162862509-1');
+</script>
+
+</head>
+
+<body>
+<main class="content">
+  <section class="header-container">
+  <input type="checkbox" name="" id="menu-control" />
+  <header class="header">
+    <div class="logo">
+      <label class="hb" for="menu-control">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </label>
+      <div class="logo-text">
+        <a class="active" href="/">
+          <h1>IRIS BLOG.</h1>
+        </a>
+      </div>
+      <div class="nav-item-link nav-item-search search" title="Search">
+        <i class="fe fe-search"></i>
+      </div>
+    </div>
+    <nav class="nav-bar">
+      
+      <a href="/categories/tech/">Tech</a>
+      
+      <a href="/categories/life/">Life</a>
+      
+      <a href="/tags">Tags</a>
+      
+      <a href="/portfolio">Portfolio</a>
+      
+      <a href="/about">About</a>
+      
+      <a class="nav-item-link nav-item-search search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </nav>
+
+   
+    
+  </header>
+  <div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+  </div>
+</section>
+
+  <section class="outer">
+  <article id="post-react_3" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      JSX &amp; Visual Dom 介紹 #3
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/05/28/react_3/" class="article-date">
+  <time datetime="2020-05-28T09:15:07.000Z" itemprop="datePublished">2020-05-28</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+  <div class="article-gallery">
+    <div class="article-gallery-photos">
+      
+        
+          <img src="/../image/react/react3.png" itemprop="image">
+        
+      
+    </div>
+  </div>
+
+
+                                                
+                                                                    <h2 id="JSX-是什麼？"><a href="#JSX-是什麼？" class="headerlink" title="JSX 是什麼？"></a>JSX 是什麼？</h2><p>一開始看到 JSX 我就覺得很混亂，為什麼會有 JavaScript 又有 HTML,看起來很亂。沒錯，上一篇文章有提到， React 就是藉由 JavaScript 產生 HTML 。</p>
+<a id="more"></a>
+<p>JSX 就是 Javascript 和 XML 結合的一種格式，允許使用 JavaScript 所有的功能。 React 發明了 JSX ，可以方便的利用 HTML 語法來創建 Virtual DOM，當遇到 <code>&lt;</code> ，JSX 就當作 HTML 解析，遇到 <code>{</code> 就當 JavaScript 解析。</p>
+<p>我們都知道 browser 只看得懂三個語言，那就是 HTML、CSS 和  JavaScript，那 JSX 要怎麼讓 browser 讀懂呢？<br>登登登等，答案是 Babel ，Babel 會將讀到的 JSX 再轉為真正的 JavaScript 寫法。在一開始的Create React App 我們就已安裝咯。如果沒有 Babel，等於就得親自使用 React 的 createElement 去寫，那應該會累死。可以看看下面兩個例子：</p>
+<h4 id="JSX寫法"><a href="#JSX寫法" class="headerlink" title="JSX寫法"></a>JSX寫法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = (</span><br><span class="line">  &lt;h1 className=<span class="string">"greeting"</span>&gt;</span><br><span class="line">    Hello, World!</span><br><span class="line">  &lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
+
+<p>等同於</p>
+<h4 id="createElement寫法"><a href="#createElement寫法" class="headerlink" title="createElement寫法"></a>createElement寫法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = React.createElement(</span><br><span class="line">  <span class="string">'h1'</span>,</span><br><span class="line">  &#123;<span class="attr">className</span>: <span class="string">'greeting'</span>&#125;,</span><br><span class="line">  <span class="string">'Hello, World!'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>從上方例子就可以看出JSX語法大量簡化了我們的工作。Babel 將 JSX 直接轉換為 React.createElement() 的程式 ， 讓我們更直觀快速。</p>
+<h2 id="JSX-怎麼寫-它的注意事項"><a href="#JSX-怎麼寫-它的注意事項" class="headerlink" title="JSX 怎麼寫? 它的注意事項"></a>JSX 怎麼寫? 它的注意事項</h2><ol>
+<li><p>HTML 的 class 屬性在 JSX 須寫為 className (class 為 JSX 保留字)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className&#x3D;&quot;testClass&quot;&gt;Test&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSX中所有元素都需要關閉 例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;content&lt;&#x2F;div&gt; 或 &lt;img &#x2F;&gt; (self-closing)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件觸發需使用駝峰式命名，例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div onClick&#x3D;&#123;() &#x3D;&gt; console.log(&#39;click test&#39;&#125;&gt;Click Me&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>style 屬性要以 JS 物件的格式撰寫，採用駝峰式命名法而非-，單位要用單引號包住 (例: ‘50%’)。外面則要再加上一層大括號。 例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style&#x3D;&#123;&#123;fontSize: &#39;15px&#39;,marginTop: &#39;20px&#39;&#125;&#125;&gt;Some text&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在JSX中仍然可以撰寫JS，但是需使用大括號包起來</p>
+</li>
+<li><p>函式return需要由一個頂端tag包住內容，直接看以下範例<br>以下語法不會出錯。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      This is my first react app!</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>以下語法則會報錯(沒有一個最外層包住所有內容的tag)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;p&gt;some text&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div className="App"&gt;</span></span><br><span class="line"><span class="regexp">      This is my first react app!</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Virtual-Dom"><a href="#Virtual-Dom" class="headerlink" title="Virtual Dom"></a>Virtual Dom</h2><p><img src="https://i.imgur.com/HxKdduo.png" alt=""></p>
+<p>這張是 <a href="https://cythilya.github.io/2017/03/31/virtual-dom/" target="_blank" rel="noopener">summer</a> 劃的圖，而且解釋得很清楚。Babel 看到 JSX 語法，會轉換成React.createElement，產生出 dom 就是 visual dom。相較於 real Dom 成本較低 ,重繪時效率高。當畫面更新只渲染變化部分，不會重新更新全部。所以如果只修改不同的地方，它就只重繪一次。大大提升效能。</p>
+<p><em>reference:<br><a href="https://zh-hant.reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener">https://zh-hant.reactjs.org/docs/introducing-jsx.html</a><br><a href="https://ithelp.ithome.com.tw/articles/10214217" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/articles/10214217</a><br><a href="https://jspang.com/detailed?id=46#toc223" target="_blank" rel="noopener">https://jspang.com/detailed?id=46#toc223</a><br><a href="https://cythilya.github.io/2017/03/31/virtual-dom/" target="_blank" rel="noopener">https://cythilya.github.io/2017/03/31/virtual-dom/</a></em></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="https://iris1114.github.io/2020/05/28/react_3/" data-id="ckaql1umo001hd8nm2v3h4e1y" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/" rel="tag">react</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/05/26/react_2/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">建立React開發環境#2</div>
+      </a>
+    
+  </nav>
+
+
+            
+                
+                    <div id="disqus_thread"></div>
+                    <script>
+                    
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://irisblog.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+
+                    
+                        
+                            
+
+                                                        
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2020 Iris Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
