@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Render Element#04</title>
+    <url>/2020/05/31/react_04/</url>
+    <content><![CDATA[<p>建立 React Apps 最小的單位是 element。而 element 是由 component 所「組成」的。</p>
+<p>與瀏覽器的 DOM element 不同，React element 是單純的 object，而且很容易被建立。React DOM 負責更新 DOM 來符合 React element。</p>
+<a id="more"></a>
+
+<h2 id="如何-render-Element-到-DOM-內"><a href="#如何-render-Element-到-DOM-內" class="headerlink" title="如何 render Element 到 DOM 內"></a>如何 render Element 到 DOM 內</h2><p>假設在html內有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;root&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我們稱為這是一個「root」DOM node，因為所有在內的 element 都會透過 React DOM 做管理。</p>
+<p>如果要 render 一個 React element 到 root DOM node，需使用 <code>ReactDOM.render()</code>， 大部分只會呼叫 ReactDOM.render() 一次。<br>example：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">ReactDOM.render(element, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可參考我寫的 <a href="https://codesandbox.io/s/react-learning-render-element4-6b7jg?file=/src/index.js" target="_blank" rel="noopener">TryItCode 例子1</a></p>
+</blockquote>
+<h2 id="新增可被-render-的-element"><a href="#新增可被-render-的-element" class="headerlink" title="新增可被 render 的 element"></a>新增可被 render 的 element</h2><p>html一樣有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;root2&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>用setInterval() 每秒去 callback ReactDOM.render()。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeUpdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> localTime = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">  <span class="keyword">const</span> element2 = (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Hello,world&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;h2&gt;It's &#123;localTime&#125;&lt;/</span>h2&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">  const rootElement2 = document.getElementById("root2");</span></span><br><span class="line"><span class="regexp">  ReactDOM.render(element2, rootElement2);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">setInterval(timeUpdate, 1000);</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/t6ZSM7O.gif" alt=""></p>
+<blockquote>
+<p>可參考我寫的 <a href="https://codesandbox.io/s/react-learning-render-element4-6b7jg?file=/src/index.js" target="_blank" rel="noopener">TryItCode 例子2</a></p>
+</blockquote>
+<h2 id="React-只會更新必要的-Element"><a href="#React-只會更新必要的-Element" class="headerlink" title="React 只會更新必要的 Element"></a>React 只會更新必要的 Element</h2><p>像剛剛上面那個範例，只有<code>&lt;h2&gt;</code>標籤內時間需要每秒被更新,則可看到他就只針對這個 DOM 去 render。React DOM 會將 element 和它的 children 與先前的狀態做比較，並且只更新必要的 DOM 達到理想的狀態。</p>
+<p><img src="https://i.imgur.com/UFCMBMZ.gif" alt=""></p>
+<p><em>reference:<br><a href="https://reactjs.org/docs/rendering-elements.html" target="_blank" rel="noopener">https://reactjs.org/docs/rendering-elements.html</a></em></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSX &amp; Visual Dom 介紹#03</title>
     <url>/2020/05/28/react_03/</url>
     <content><![CDATA[<h2 id="JSX-介紹"><a href="#JSX-介紹" class="headerlink" title="JSX 介紹"></a>JSX 介紹</h2><p>一開始看到 JSX 我就覺得很混亂，為什麼會有 JavaScript 又有 HTML,看起來很亂。沒錯，上一篇文章有提到， React 就是藉由 JavaScript 產生 HTML 。</p>
