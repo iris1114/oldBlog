@@ -39,6 +39,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Render Element#05</title>
+    <url>/2020/05/31/react_05/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="如何-render-Element-到-DOM-內"><a href="#如何-render-Element-到-DOM-內" class="headerlink" title="如何 render Element 到 DOM 內"></a>如何 render Element 到 DOM 內</h2><p><em>reference:<br><a href="https://reactjs.org/docs/rendering-elements.html" target="_blank" rel="noopener">https://reactjs.org/docs/rendering-elements.html</a></em></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSX &amp; Visual Dom 介紹#03</title>
     <url>/2020/05/28/react_03/</url>
     <content><![CDATA[<h2 id="JSX-介紹"><a href="#JSX-介紹" class="headerlink" title="JSX 介紹"></a>JSX 介紹</h2><p>一開始看到 JSX 我就覺得很混亂，為什麼會有 JavaScript 又有 HTML,看起來很亂。沒錯，上一篇文章有提到， React 就是藉由 JavaScript 產生 HTML 。</p>

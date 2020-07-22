@@ -8,23 +8,23 @@
     <meta name="description" content="前端 / 生活 / 旅行">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="建立 React Apps 最小的單位是 element。而 element 是由 component 所「組成」的。 與瀏覽器的 DOM element 不同，React element 是單純的 object，而且很容易被建立。React DOM 負責更新 DOM 來符合 React element。">
+  <meta name="description" content="如何 render Element 到 DOM 內reference:https:&#x2F;&#x2F;reactjs.org&#x2F;docs&#x2F;rendering-elements.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Render Element#04">
-<meta property="og:url" content="https://iris1114.github.io/2020/05/31/react_04/index.html">
+<meta property="og:title" content="Render Element#05">
+<meta property="og:url" content="https://iris1114.github.io/2020/05/31/react_05/index.html">
 <meta property="og:site_name" content="Iris Blog">
-<meta property="og:description" content="建立 React Apps 最小的單位是 element。而 element 是由 component 所「組成」的。 與瀏覽器的 DOM element 不同，React element 是單純的 object，而且很容易被建立。React DOM 負責更新 DOM 來符合 React element。">
+<meta property="og:description" content="如何 render Element 到 DOM 內reference:https:&#x2F;&#x2F;reactjs.org&#x2F;docs&#x2F;rendering-elements.html">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://iris1114.github.io/2020/05/31/image/react/react04.png">
 <meta property="article:published_time" content="2020-05-31T09:15:07.000Z">
-<meta property="article:modified_time" content="2020-05-31T09:05:21.000Z">
+<meta property="article:modified_time" content="2020-07-17T08:14:28.712Z">
 <meta property="article:author" content="Iris Chew">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://iris1114.github.io/2020/05/31/image/react/react04.png">
 
   <title>
-    Render Element#04 |
+    Render Element#05 |
     
     Iris Blog</title>
   
@@ -102,7 +102,7 @@
 </section>
 
   <section class="outer">
-  <article id="post-react_04" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-react_05" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
     <div class="article-inner">
         
@@ -110,7 +110,7 @@
                 
   
     <h1 class="article-title" itemprop="name">
-      Render Element#04
+      Render Element#05
     </h1>
   
   
@@ -123,7 +123,7 @@
 
                 
                     <div class="article-meta">
-                        <a href="/2020/05/31/react_04/" class="article-date">
+                        <a href="/2020/05/31/react_05/" class="article-date">
   <time datetime="2020-05-31T09:15:07.000Z" itemprop="datePublished">2020-05-31</time>
 </a>
                             
@@ -161,38 +161,14 @@
 
 
                                                 
-                                                                    <p>建立 React Apps 最小的單位是 element。而 element 是由 component 所「組成」的。</p>
-<p>與瀏覽器的 DOM element 不同，React element 是單純的 object，而且很容易被建立。React DOM 負責更新 DOM 來符合 React element。</p>
-<a id="more"></a>
+                                                                    <a id="more"></a>
 
-<h2 id="如何-render-Element-到-DOM-內"><a href="#如何-render-Element-到-DOM-內" class="headerlink" title="如何 render Element 到 DOM 內"></a>如何 render Element 到 DOM 內</h2><p>假設在html內有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;root&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>我們稱為這是一個「root」DOM node，因為所有在內的 element 都會透過 React DOM 做管理。</p>
-<p>如果要 render 一個 React element 到 root DOM node，需使用 <code>ReactDOM.render()</code>， 大部分只會呼叫 ReactDOM.render() 一次。<br>example：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">ReactDOM.render(element, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>可參考我寫的 <a href="https://codesandbox.io/s/react-learning-render-element4-6b7jg?file=/src/index.js" target="_blank" rel="noopener">TryItCode 例子1</a></p>
-</blockquote>
-<h2 id="新增可被-render-的-element"><a href="#新增可被-render-的-element" class="headerlink" title="新增可被 render 的 element"></a>新增可被 render 的 element</h2><p>html一樣有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;root2&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>用setInterval() 每秒去 callback ReactDOM.render()。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeUpdate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> localTime = <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleTimeString();</span><br><span class="line">  <span class="keyword">const</span> element2 = (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;Hello,world&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;h2&gt;It's &#123;localTime&#125;&lt;/</span>h2&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">  const rootElement2 = document.getElementById("root2");</span></span><br><span class="line"><span class="regexp">  ReactDOM.render(element2, rootElement2);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">setInterval(timeUpdate, 1000);</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/t6ZSM7O.gif" alt=""></p>
-<blockquote>
-<p>可參考我寫的 <a href="https://codesandbox.io/s/react-learning-render-element4-6b7jg?file=/src/index.js" target="_blank" rel="noopener">TryItCode 例子2</a></p>
-</blockquote>
-<h2 id="React-只會更新必要的-Element"><a href="#React-只會更新必要的-Element" class="headerlink" title="React 只會更新必要的 Element"></a>React 只會更新必要的 Element</h2><p>像剛剛上面那個範例，只有<code>&lt;h2&gt;</code>標籤內時間需要每秒被更新,則可看到他就只針對這個 DOM 去 render。React DOM 會將 element 和它的 children 與先前的狀態做比較，並且只更新必要的 DOM 達到理想的狀態。</p>
-<p><img src="https://i.imgur.com/UFCMBMZ.gif" alt=""></p>
-<p><em>reference:<br><a href="https://reactjs.org/docs/rendering-elements.html" target="_blank" rel="noopener">https://reactjs.org/docs/rendering-elements.html</a></em></p>
+<h2 id="如何-render-Element-到-DOM-內"><a href="#如何-render-Element-到-DOM-內" class="headerlink" title="如何 render Element 到 DOM 內"></a>如何 render Element 到 DOM 內</h2><p><em>reference:<br><a href="https://reactjs.org/docs/rendering-elements.html" target="_blank" rel="noopener">https://reactjs.org/docs/rendering-elements.html</a></em></p>
 
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="https://iris1114.github.io/2020/05/31/react_04/" data-id="ckb7hzcdf001dabnmhcwwdijq" class="article-share-link">
+                                        <a data-url="https://iris1114.github.io/2020/05/31/react_05/" data-id="ckcwqfhgw0000hanm7p2ob4e5" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -206,10 +182,19 @@
         
   <nav class="article-nav">
     
+      <a href="/2020/05/31/react_04/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            Render Element#04
+          
+        </div>
+      </a>
     
-      <a href="/2020/05/31/react_05/" class="article-nav-link">
+    
+      <a href="/2020/05/28/react_03/" class="article-nav-link">
         <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">Render Element#05</div>
+        <div class="article-nav-title">JSX &amp; Visual Dom 介紹#03</div>
       </a>
     
   </nav>
