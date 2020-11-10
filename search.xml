@@ -148,6 +148,7 @@
 
 <h2 id="Virtual-Dom"><a href="#Virtual-Dom" class="headerlink" title="Virtual Dom"></a>Virtual Dom</h2><p><img src="https://i.imgur.com/HxKdduo.png" alt=""></p>
 <p>這張是 <a href="https://cythilya.github.io/2017/03/31/virtual-dom/" target="_blank" rel="noopener">summer</a> 劃的圖，而且解釋得很清楚。Babel 看到 JSX 語法，會轉換成React.createElement，產生出 dom 就是 visual dom。相較於 real Dom 成本較低 ,重繪時效率高。當畫面更新只渲染變化部分，不會重新更新全部。所以如果只修改不同的地方，它就只重繪一次。大大提升效能。</p>
+<p>例子： 假設今天有一個table，有很多欄位。目前想增加一個欄位，在還沒virtual dom 之前，就會整個table都重新render，而virtual dom 就能只針對那個欄位進行改變，可以提升效能。</p>
 <p><em>reference:<br><a href="https://zh-hant.reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener">https://zh-hant.reactjs.org/docs/introducing-jsx.html</a><br><a href="https://ithelp.ithome.com.tw/articles/10214217" target="_blank" rel="noopener">https://ithelp.ithome.com.tw/articles/10214217</a><br><a href="https://jspang.com/detailed?id=46#toc223" target="_blank" rel="noopener">https://jspang.com/detailed?id=46#toc223</a><br><a href="https://cythilya.github.io/2017/03/31/virtual-dom/" target="_blank" rel="noopener">https://cythilya.github.io/2017/03/31/virtual-dom/</a></em></p>
 ]]></content>
       <categories>
