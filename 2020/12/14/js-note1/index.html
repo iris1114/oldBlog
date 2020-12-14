@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="前端 / 生活 / 旅行">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天閱讀了某本書，發現了一些都不知道的事，其中一個是原來我們 html 寫入的 id, 在網頁解析完成後會自動變成全域變數。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原來 HTML 寫入的 id 會變全域變數">
+<meta property="og:url" content="https://iris1114.github.io/2020/12/14/js-note1/index.html">
+<meta property="og:site_name" content="Iris Blog">
+<meta property="og:description" content="今天閱讀了某本書，發現了一些都不知道的事，其中一個是原來我們 html 寫入的 id, 在網頁解析完成後會自動變成全域變數。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/AiojnAy.png">
+<meta property="article:published_time" content="2020-12-14T13:13:08.000Z">
+<meta property="article:modified_time" content="2020-12-14T14:37:24.225Z">
+<meta property="article:author" content="Iris Chew">
+<meta property="article:tag" content="javaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/AiojnAy.png">
+
+  <title>
+    原來 HTML 寫入的 id 會變全域變數 |
+    
+    Iris Blog</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162862509-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162862509-1');
+</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+<main class="content">
+  <section class="header-container">
+  <input type="checkbox" name="" id="menu-control" />
+  <header class="header">
+    <div class="logo">
+      <label class="hb" for="menu-control">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </label>
+      <div class="logo-text">
+        <a class="active" href="/">
+          <h1>IRIS BLOG.</h1>
+        </a>
+      </div>
+      <div class="nav-item-link nav-item-search search" title="Search">
+        <i class="fe fe-search"></i>
+      </div>
+    </div>
+    <nav class="nav-bar">
+      
+      <a href="/categories/tech/">Tech</a>
+      
+      <a href="/categories/life/">Life</a>
+      
+      <a href="/tags">Tags</a>
+      
+      <a href="/portfolio">Portfolio</a>
+      
+      <a href="/about">About</a>
+      
+      <a class="nav-item-link nav-item-search search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </nav>
+
+   
+    
+  </header>
+  <div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+  </div>
+</section>
+
+  <section class="outer">
+  <article id="post-js-note1" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      原來 HTML 寫入的 id 會變全域變數
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/12/14/js-note1/" class="article-date">
+  <time datetime="2020-12-14T13:13:08.000Z" itemprop="datePublished">2020-12-14</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+                    </div>
+                    
+
+                        
+                            
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <p>今天閱讀了某本書，發現了一些都不知道的事，其中一個是原來我們 html 寫入的 id, 在網頁解析完成後會自動變成全域變數。</p>
+<a id="more"></a>
+
+<p>原來 HTML 寫入的 id 會變全域變數</p>
+<p>來驗證一下吧～</p>
+<p>在 html 寫入：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"foo"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foo1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在script中印出：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo);  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> foo);</span><br><span class="line"><span class="built_in">console</span>.log(foo1);</span><br></pre></td></tr></table></figure>
+<p>console 結果：<br><img src="https://i.imgur.com/AiojnAy.png" alt=""></p>
+<p>可以看出 id foo 自動轉為全域變數，而class foo1 則沒有被定義為變數。雖然 id 具有唯一性，在 js selector 也會方便，但還是要注意有會自動變成全域變數的特性。</p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="https://iris1114.github.io/2020/12/14/js-note1/" data-id="ckionnzn20000v2nmgjz752ku" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/06/15/react_05/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">React Components#05</div>
+      </a>
+    
+  </nav>
+
+
+            
+                
+                    <div id="disqus_thread"></div>
+                    <script>
+                    
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                    /*
+                    var disqus_config = function () {
+                    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://irisblog.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+
+                    
+                        
+                            
+
+                                                        
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>&copy; 2020 Iris Blog</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+</body>
+</html>
