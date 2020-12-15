@@ -15,6 +15,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo);  </span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> foo);</span><br><span class="line"><span class="built_in">console</span>.log(foo1);</span><br></pre></td></tr></table></figure>
 <p>console 結果：<br><img src="https://i.imgur.com/AiojnAy.png" alt=""></p>
 <p>可以看出 id foo 自動轉為全域變數，而class foo1 則沒有被定義為變數。雖然 id 具有唯一性，在 js selector 也會方便，但還是要注意 id 具有會自動轉為全域變數的特性。</p>
+<p>#day1</p>
 ]]></content>
       <categories>
         <category>tech</category>
