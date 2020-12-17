@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Observer 好強大 - IntersectionObserver 筆記</title>
+    <url>/2020/12/17/js-note2/</url>
+    <content><![CDATA[<p>昨天上班接到一個需求是當畫面滑動到某個位置的時候，送出 GA 事件。菜菜的我只想到用 scroll 來監聽去算 offsetTop 等等，主管說可以用 observer 去處理，才發現了強大的 observer。</p>
+<a id="more"></a>
+
+<p>用 scroll 也不是不行，只是這種方法的缺點是，由於 scroll 事件密集發生，計算量很大，容易造成性能問題。而 observer 可以異步自動觀察目標物， 就是當目標物出現在觀察器（window）的時候就會 callback， 可以再去執行想做的事。</p>
+<h2 id="IntersectionObserver-HowTo"><a href="#IntersectionObserver-HowTo" class="headerlink" title="IntersectionObserver HowTo"></a>IntersectionObserver HowTo</h2><h3 id="1-建立觀察器（observer）"><a href="#1-建立觀察器（observer）" class="headerlink" title="1. 建立觀察器（observer）"></a>1. 建立觀察器（observer）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> IntersectionObserver(callback, [option]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-可指定參數：callback"><a href="#2-可指定參數：callback" class="headerlink" title="2. 可指定參數：callback"></a>2. 可指定參數：callback</h3><p>callback就是當目標物（entry）進入到觀察器的鏡頭（root）內時，要做什麼事的function。</p>
+<p>callback帶進來的都會是陣列，不管觀察的目標物是1個或多個</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> callback =<span class="function">(<span class="params">entries, observer</span>) =&gt;</span> &#123;</span><br><span class="line">  entries.forEach(<span class="function"><span class="params">entry</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Each entry describes an intersection change for one observed</span></span><br><span class="line">    <span class="comment">// target element:</span></span><br><span class="line">    <span class="comment">//   entry.boundingClientRect</span></span><br><span class="line">    <span class="comment">//   entry.intersectionRatio</span></span><br><span class="line">    <span class="comment">//   entry.intersectionRect</span></span><br><span class="line">    <span class="comment">//   entry.isIntersecting </span></span><br><span class="line">    <span class="comment">//   entry.rootBounds</span></span><br><span class="line">    <span class="comment">//   entry.target</span></span><br><span class="line">    <span class="comment">//   entry.time</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>callback的項目：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">      &#x2F;&#x2F; ReadOnly：目標元素的矩形區域的信息</span><br><span class="line">      boundingClientRect: &#123; &#x2F;* ... *&#x2F; &#125;,</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; 目標物的可見比例</span><br><span class="line">      intersectionRatio: 1,</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; ReadOnly：目標物與root的交叉區域</span><br><span class="line">      intersectionRect: &#123; &#x2F;* ... *&#x2F; &#125;,</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; 是否出現在鏡頭(root))中</span><br><span class="line">      isIntersecting: true,</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; ReadOnly：鏡頭(root)的資訊</span><br><span class="line">      rootBounds: &#123; &#x2F;* ... *&#x2F; &#125;,</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; 目標物本身</span><br><span class="line">      target: 獵物的DOM節點</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-可指定參數：option"><a href="#3-可指定參數：option" class="headerlink" title="3. 可指定參數：option"></a>3. 可指定參數：option</h3><p>option 就是調整觀察器的鏡頭用的。option 是選填，不填就是預設值。如果沒有需求，可以只寫 callback 即可。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> options = &#123;</span><br><span class="line">    root: <span class="built_in">document</span>.querySelector(<span class="string">'#scrollArea'</span>),</span><br><span class="line">    rootMargin: <span class="string">'0px'</span>,</span><br><span class="line">    threshold: <span class="number">1</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>root 必須是目標元素的父級元素。root的預設是null，root為null時就代表鏡頭就是你的視窗，就是螢幕正在看的區域。</p>
+</li>
+<li><p>rootMargin的預設值是”0px 0px 0px 0px”。4個值分別代表上、右、下、左，這個是放大或縮小鏡頭的邊界用的。比方你的螢幕只有13寸，但你想讓鏡頭的範圍拉大到15寸，這樣就可以讓目標離不開你的視線，那就填rootMargin來拉大。</p>
+</li>
+<li><p>threshold 指目標物出現了多少部份在你的鏡頭裡，而出現的部份到了指定的百分比後，都會執行callback，下面例子則以[0, 0.25, 0.5, 0.75, 1]去做設定。</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/Z40SqXH.gif" alt=""></p>
+<h3 id="4-開始observe"><a href="#4-開始observe" class="headerlink" title="4. 開始observe"></a>4. 開始observe</h3><p>定義要觀察的目標物，再用建立好的觀察器（observer）去觀察 （observe）即可。<br>也有另外兩個方法（取消觀察/關閉觀察器）可以去執行。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> target = <span class="built_in">document</span>.querySelector(<span class="string">".container"</span>);</span><br><span class="line">observer.observe(target);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>開始觀察某個目標物：observer.observe(target);</li>
+<li>取消觀察某個目標物：observer.unobserve(target);</li>
+<li>關掉這個觀察器：observer.disconnect();</li>
+</ul>
+<h3 id="5-demo"><a href="#5-demo" class="headerlink" title="5. demo"></a>5. demo</h3><p><a href="https://codesandbox.io/s/intersectionobserver-f7dlt?file=/src/index.js" target="_blank" rel="noopener">https://codesandbox.io/s/intersectionobserver-f7dlt?file=/src/index.js</a></p>
+<p>html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>IntersectionObserver Sample<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box1"</span>&gt;</span>box1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box2"</span>&gt;</span>box2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box box3"</span>&gt;</span>box3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>css</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#add</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box3</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#809</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> init = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> options = &#123;</span><br><span class="line">    root: <span class="literal">null</span>,</span><br><span class="line">    rootMargin: <span class="string">"0px"</span>,</span><br><span class="line">    threshold: <span class="number">1</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> callback = <span class="function">(<span class="params">entries</span>) =&gt;</span> &#123;</span><br><span class="line">    entries.forEach(<span class="function">(<span class="params">entry</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (entry.isIntersecting) &#123;</span><br><span class="line">        <span class="comment">//當目標物進入，即可執行想做的程式</span></span><br><span class="line">        <span class="keyword">let</span> box = entry.target;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"entry"</span>, entry);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"box3"</span>, box);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> observer = <span class="keyword">new</span> IntersectionObserver(callback, options);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> target = <span class="built_in">document</span>.querySelector(<span class="string">".box3"</span>);</span><br><span class="line"></span><br><span class="line">  observer.observe(target);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">init();</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>reference:<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API</a><br><a href="https://letswrite.tw/intersection-oserver-basic/" target="_blank" rel="noopener">https://letswrite.tw/intersection-oserver-basic/</a><br><a href="http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html</a><br>圖片來源：<br><a href="https://developers.google.com/web/updates/2016/04/intersectionobserver" target="_blank" rel="noopener">https://developers.google.com/web/updates/2016/04/intersectionobserver</a></p>
+]]></content>
+      <categories>
+        <category>tech</category>
+      </categories>
+      <tags>
+        <tag>javaScript</tag>
+        <tag>練習寫筆記</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>原來 HTML 寫入的 id 會變全域變數</title>
     <url>/2020/12/14/js-note1/</url>
     <content><![CDATA[<p>今天閱讀了某本書，發現了一些都不知道的事，其中一個是原來我們 html 寫入的 id, 在網頁解析完成後會自動變成全域變數。</p>
@@ -22,6 +79,7 @@
       </categories>
       <tags>
         <tag>javaScript</tag>
+        <tag>練習寫筆記</tag>
       </tags>
   </entry>
   <entry>
