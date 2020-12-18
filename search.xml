@@ -6,7 +6,7 @@
     <content><![CDATA[<p>昨天上班接到一個需求是當畫面滑動到某個位置的時候，送出 GA 事件。菜菜的我只想到用 scroll 來監聽去算 offsetTop 等等，主管說可以用 observer 去處理，才發現了強大的 observer。</p>
 <a id="more"></a>
 
-<p>用 scroll 也不是不行，只是這種方法的缺點是，由於 scroll 事件密集發生，計算量很大，容易造成性能問題。而 observer 可以異步自動觀察目標物， 就是當目標物出現在觀察器（window）的時候才會 callback， 可以再去執行想做的事。</p>
+<p>用 scroll 也不是不行，只是這種方法的缺點是，由於 scroll 事件密集發生，計算量很大，容易造成性能問題。而 observer 可以非同步自動觀察目標物， 就是當目標物出現在觀察器（window）的時候才會 callback，降低了主執行緒（main thread）的負擔 (JS 是Single Thread 程式)，大幅提升效能。</p>
 <h2 id="IntersectionObserver-HowTo"><a href="#IntersectionObserver-HowTo" class="headerlink" title="IntersectionObserver HowTo"></a>IntersectionObserver HowTo</h2><h3 id="1-建立觀察器（observer）"><a href="#1-建立觀察器（observer）" class="headerlink" title="1. 建立觀察器（observer）"></a>1. 建立觀察器（observer）</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> IntersectionObserver(callback, [option]);</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-可指定參數：callback"><a href="#2-可指定參數：callback" class="headerlink" title="2. 可指定參數：callback"></a>2. 可指定參數：callback</h3><p>callback就是當目標物（entry）進入到觀察器的鏡頭（root）內時，要做什麼事的function。</p>
@@ -439,6 +439,7 @@
 <li>2020/03/25 - 人都有權利悲傷，但一定要讓自己更快樂才行。 -李千那</li>
 <li>2020/04/02 - 生活除了是每個月5號，還有詩和遠方。</li>
 <li>2020/04/18 - Mama said don’t stop believing, Keep on moving!  Keep on dreaming! -交出邦尼</li>
+<li>2020/12/18 - 你若明白人只活一次，就更沒有隨波逐流的理由。 -Patti Smith</li>
 </ul>
 ]]></content>
       <categories>
